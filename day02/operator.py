@@ -55,6 +55,7 @@ print(type(e))
 #  문자열 비교
 print('=======================')
 
+# 사전엣 앞에 나오는 단어가 작다
 print('acd' < 'ade')
 print('apple' < 'grape')
 print('zebra' < '감자')
