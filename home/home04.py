@@ -1,4 +1,4 @@
-
+# while
 
 
 num1 = int(input("숫자: "))
