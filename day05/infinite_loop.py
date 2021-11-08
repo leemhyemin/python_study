@@ -4,7 +4,6 @@ while True:
     if num == 0: break
 '''
 
-
 money = 5000
 cola = 0
 snack = 0
