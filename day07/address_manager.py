@@ -15,42 +15,41 @@ while True:
     print('4. 모든 연락처 조회')
     print('5. 프로그램 종료')
     print('------------------------------------')
-
-    menu = input('메뉴입력: ')
-
+    menu = int(input('메뉴입력: ')) 
 
     if menu == 1:
-
         print('-'*20)
         print('연락처 등록을 시작합니다.')
         name = input('이름: ')
         phone = input('전화번호: ')
-        namelist.append
-        phonelist.append
-
+        namelist.append(namelist)
+        phonelist.append(phonelist)
         print(f'{name}님 연락처 저장완료!')
 
     elif menu == 2:
-
         name = input('찾을 이름을 입력하세요: ')
-        print('{name}님의 전화번호는 {phone}입니다.'.format)
-    
+        if name in namelist:
+            print('(name)님의 전화번호는 (phone)입니다.(namelist.index), (phonelist.index)')
+        else:
+            print('(namelist)님은 연락처 목록에 없습니다.')
     elif menu == 3:
-
         name = input('삭제할 이름을 입력하세요: ')
-        namelist.remove(name)
-        print('{name}님의 정보가 정상적으로 삭제되었습니다.'.format)
-    
+        if namelist in name:
+            namelist.remove(name)
+        else:
+            print('{name}님의 정보가 정상적으로 삭제되었습니다.')
+            break
     elif menu == 4:
-
         print('========전체 연락처 조회========')
+        print(f'이름: {namelist}')
+        print(f'전화번호: {phonelist}')
 
-    elif menu ==5:
-        
+    elif menu == 5:        
         print('프로그램 종료')
-
-    else:
         break
+    else:
+        print("메뉴를 다시 입력해주세요.")
+
 
 
 

@@ -1,1 +1,2 @@
-print("사랑해요","연예가중계",sep='   ') #sep='' 콤마 띄어쓰기 
+name = input('안녕')
+print("%s ! " % name)
