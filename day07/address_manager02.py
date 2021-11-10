@@ -20,22 +20,20 @@ while True:
         print("연락처 등록을 시작합니다.")
         name = input("이름: ")
         phone = input("전화번호: ")
-        
-        # 입력받은 이름데이터와 전화번호데이터를 각각의 리스트에 추가하세요.
-        # 추가완료시 "xxx님 연락처 저장 완료!"를 출력하세요.
-        ????
-      ????
+        namelist.append(name)
+        phonelist.append(phone)
         print("%s님 연락처 저장 완료!" % name)
         
     elif menu == 2:
-        
         name = input("찾을 이름을 입력하세요: ")
         
-        if ????:
-            # 이름이 리스트 안에서 발견된다면 해당 이름을 통해 인덱스 번호를
-            # 추출하여 인덱스를 통해 리스트의 데이터를 출력한다.
-            # 출력예시: "이순신의 전화번호는 010-1234-1234입니다."
-            ????
+        if name in namelist:
+            idx = namelist.index(name)
+            print(f'{name}님의 전화번호는 {phonelist[idx]}입니다.')
+            
+        else:
+            print(f'{name}님은 연락처 목록에 없습니다.')
+        
             
             print("%s의 전화번호는 %s입니다." % (namelist[idx], phonelist[idx]))
             
