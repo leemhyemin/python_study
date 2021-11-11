@@ -1,4 +1,4 @@
-
+# 값이 고정되는 리스트 튜플.
 
 scores = (87, 92, 23, 45, 100)
 print(type(scores))
@@ -33,7 +33,7 @@ print(tu)
 print('='*40)
 
 P = [1,2,3,4,5,6]
-
+# 변환 할때는 튜플함수
 P = tuple(p)
 print(type(p))
 # p[1] = 100
