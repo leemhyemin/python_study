@@ -17,30 +17,50 @@ while True:
     print("=========================================")
     select = input("# 메뉴 입력: ")
     if select == '1': 
-        selectu = input('메뉴명:볶음밥 ')      
-        num = input('가격:1000 ') 
-        print(f'신규 메뉴 {select}(이)가 등록되었습니다.')
-        foods[selectu]=num
-    elif select == '2':        
-        print('======메뉴판======')
-        print(f'{selectu} : {foods[num]}원')
-        print('='*12)
+        food_name = input('- 메뉴명: ')
+        if food_name not in foods:
+            price = input('- 가격: ') 
+            #dict[new_key] = value
+            foods[food_name] = price
+            print(foods)
+        else:
+            print(f'{food_name}은(는) 이미 등록된 메뉴 입니다.')      
+    elif select == '2':   
 
-        for  selectu in foods:
-            name = '1.수정 |2. 삭제 |3.나가기'
-            if foods in num name 1:
-                print('가격을 변경할 메뉴의 이름을 입력하세요.')
-                selectu = input('=> ')
-                num = input('변경할 가격: ')
-                print(foods)
-            elif name 2:
-                del(foods['select'])
-                print(foods)
-            else:
-                print('3')
-                continue
+        if len(foods) > 0:
+            print('======메뉴판======')
+            for f_name in foods:
+                f_price = foods[f_name]
+                print('# {:<3s}:{:>5d}원'.format(f_name, f_price))
+            print('=======================')
+            print('1.수정 |2. 삭제 |3.나가기')
+            choice = int(input('>>> '))
+
+            if choice == 1:
+                m_name = input('# 수정할 메뉴명: ')
+                if m_name in foods:
+                    old_price = foods[m_name]
+                    new_price = int(input(f'- 새로운 가격({old_price}): '))
+                    #dict[key] = new_value  딕셔너리 수정          
+                    foods[m_name] = new_price
+                    print(f'\n#{m_name}의 가격이 {old_price}원에서 {new_price}원으로 변경되었습니다.')
+                else:
+                    print(f'{d_name}은(는) 등록된 메뉴가 아닙니다.')
+            elif choice == 2:
+                d_name = input('# 삭제할 메뉴명: ')
+               
+                if d_name in foods:
+                    del(foods[d_name])
+                    print(f'{d_name}이(가) 정상 삭제 되었습니다.')
+                else:
+                    print(f'{d_name}은(는) 등록된 메뉴가 아닙니다.')
             
-
+            else:
+                continue
+        
+        else:
+            print('\n# 메뉴를 먼저 등록하세요!')
+            
     elif select == "3":
         print("# 프로그램을 종료하시겠습니까?[Y/N]")
         choice = input("=> ")
