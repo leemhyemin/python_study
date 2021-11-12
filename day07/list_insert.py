@@ -4,7 +4,7 @@ nums = [1, 3, 5, 7]
 print(nums)
 
 # nums[4] = 9 (x)
-nums.append(9) # append 뒤에 추가.
+nums.append(9) # append 뒤에 추가. 리스트 저장
 print(nums)
 
 nums.append('안녕')
