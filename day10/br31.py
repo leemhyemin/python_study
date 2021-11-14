@@ -57,9 +57,15 @@ while num < 31:
         elif len(num2) == 2 and int(num2) + 1 != int(num2):
                 print('순차적인 숫자를 입력하세요!!')
 
+        # elif len(num2) .isalpha():
+        #         print('!!숫자로 쓰라고 했다~~~')
+        #         continue
+        
+
         else:
             num = int(num2[len(num2)-1])
             turn += 1
+
             
         
 print(f"{player_list[turn%2]} 패배!!! 후훗 잔넨 (쑻) (쑻)")
