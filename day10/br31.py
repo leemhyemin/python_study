@@ -1,13 +1,22 @@
 
+import sys #프로그램 종료
 
 
-# 플레이어들의 이름을 저장할 리스트
+
+thirty_one_list = [] # 플레이어들의 이름을 저장할 리스트
+player_list = [] #플레이어 닉네임을 저장할 리스트
 print('### 베스킨 라빈스~~~ 써리 원~!')
 print('- 참여인원을 입력(최소2 최대4')
-
-player_list = [] #플레이어 닉네임
 while True:
     player_num = int(input('>>> '))
+
+    #숫자로 썼는지 검증
+    if player_num.isdecimal():
+        print('# 숫자로 쓰라했다 ~~')
+        continue
+    else:
+        player_num = int(player_num)
+
 
     if player_num < 2 or player_num > 4:
         print('인원 범위가 알맞지 않음!(2 ~ 4 입력)')
@@ -34,53 +43,60 @@ while True:
             else:
                 player_list.append(player_name)
                 break
+    ######################################################
+    ## 게임 시작 ##
+    turn = 0 # 현재 턴의 플레이어 인덱스를 저장
+    start = 1 #입력해야할 값을 안내하는 숫자
+    answer_list = 0
+    while True:
+        print(f'\n# {player_list[turn%player_num]}의 턴!!!')
 
-    turn = 0
-    num = 0
+        if start >= 31:
+            print(f'\n\n# {player_list[turn]} 패배!! GAME OVER')
+            sys.exit()
 
-while num < 31:
-    print(f'# {player_list[turn%player_num]}의 턴!!!')
-    print('[숫자를 입력하세요(최소 1개, 최대3개) | 예시:23 24 25]')
-    print('# 마지막에 31을 입력하는 플레이어가 패배합니다.')
-    print(f'# 현재 {num+1} 부터 입력하시면 됩니다!!')
-    # num_input = True
 
-    while num_input == True:
-        num2 = input('>>> ')
-        num2 = num2.split(" ")
-        if num2[0] == "":
-            print('!! 아무것도 입력안하면 안된다~~~')
-        elif int(num2[0]) != num +1:
-            print(f'숫자를 {num+1}부터 제대로 입력하세요!')
-        elif len(num2) > 3:
-            print('1개에서 3개 사이의 숫자를 입력하세요!')
-        elif len(num2) == 2 and int(num2) + 1 != int(num2):
+
+        print('[ 숫자를 입력하세요(최소 1개, 최대3개) | 예시:23 24 25 ]')
+        print('# 마지막에 31을 입력하는 플레이어가 패배합니다.')
+
+        print(f'# 현재 {start} 부터 입력하시면 됩니다!!')
+        while True:
+            answer_list = list(map(int, input('>> ').split()))
+
+            ###answer_list 검증
+            if len(answer_list) <= 0:
+                print('!! 아무것도 입력안하면 안된다~~~')
+            elif len(answer_list) > 3:
+                print('!! 1개에서 3개 사이의 숫자를 입력하세요!! ')
+            elif ((len(answer_list) == 2) and (answer_list[0] + 1 != answer_list[1])):    
                 print('순차적인 숫자를 입력하세요!!')
+            elif ((len(answer_list) == 2) and ((answer_list[0] + 1 != answer_list[1]) or (answer_list[1] + 1 != answer_list[2]))) :   
+                # and는 양쪽이 true 한쪽이 flase 실행 x  or 값을 and와 비교 ! t or ? = t! 
+                print('순차적인 숫자를 입력하세요!!')
+            elif start != answer_list[0]:
+                print(f'# 숫자를 {start}부터 제대로 입력하세요!')
+            else:
+                # 검증 완료 케이스
+                thirty_one_list += answer_list
 
-        # elif len(num2) .isalpha():
-        #         print('!!숫자로 쓰라고 했다~~~')
-        #         continue
-        
+                # 턴 보정
+                if turn == len(player_list) - 1:
+                    turn = 0
+                else:
+                    turn += 1
 
-        else:
-            num = int(num2[len(num2)-1])
-            turn += 1
-
+                # 현재 턴이 마지막 플레이어였다면 다음 턴은 첫번째 플레이어로 보정
+                
+                #start값 보정
+                start = thirty_one_list[-1] + 1
             
-        
-print(f"{player_list[turn%2]} 패배!!! 후훗 잔넨 (쑻) (쑻)")
-print('###종료하시려면 Enter!!!!')
+                break #숫자 입력마감
+                
 
-# 순차적인 숫자를 입력하세요!!
-# 1개에서 3개 사이의 숫자를 입력하세요!
-# 숫자를 1부터 제대로 입력하세요!
-                                            
-            # num = int(num2[len(num2)-1])
-            # turn += 1
 
-            # turn -= 1
-       
-        
+#append하면 1차함수가 2차함수 ex [[1,2,3]] 더하기 하면 결합.ex [1, 2 , 3]  
 
+    
 
     
