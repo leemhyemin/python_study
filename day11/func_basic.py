@@ -21,9 +21,9 @@ for n in range(1,101):
 print(f'1~100까지의 누적합: {total}')
 
 ################################################   
-
+# 함수는 정의랑 콜이랑 나누는게 좋다
 # 함수의 정의 (1 ~ x 까지의 총합을 구하는 함수) 
-# def 함수이름 (변수):   *함수이름 거의 동사
+# def 함수이름 (매개변수parameter):   *함수이름 거의 동사
 def calc_total(x):
     print('함수 calc_total 실행!')
     total = 0
@@ -31,6 +31,7 @@ def calc_total(x):
         total += n
     return total #총합
         
+# return 결과반환 데이터
 print('#'*50)
 
 # 함수는 정의한것만으로는 실행되지 않음 
