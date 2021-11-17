@@ -22,7 +22,7 @@ def add_all2(*numbers):
 
 #############################################
 
-result = add_all((10, 20, 30))
+result = add_all((10, 20, 30)) #소괄호를 안쓰고 싶을때 * 튜플
 print(result)
 
 result2 = add_all2(100, 300, 100)
