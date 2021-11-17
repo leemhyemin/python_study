@@ -46,7 +46,7 @@ if __name__ == '__main__':
             print(len(inventory)[menu])
         elif menu ==4:
             print('수정하실 제품의 번호를 입력하세요.')
-            menu = int(input('- 제품번호: '))
+            product_list = int(input('- 제품번호: '))
             idx = inventory.index(product_list)
             new_product = product_list[idx]
             
