@@ -163,7 +163,7 @@ def modify_product():
 
         # 공통 처리 (총액 갱신)
         product['총액'] = product['가격'] * product['수량']
-        
+
     else:
         print('#존재하지 않는 제품입니다.')    
     
@@ -209,3 +209,20 @@ if __name__ == '__main__':
 
         input('#Enter를 누르시면 메뉴로 돌아갑니다.')
  
+
+
+#  C R U D 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
