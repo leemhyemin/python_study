@@ -38,9 +38,10 @@ def insert_product():
 if __name__ == '__main__':
 
     while True:
-        print('\n1. 제품등록')
-        print('2.전체 제품 조회')
-        print('3. 끝내기')
+        print('\n*** 재고 관리 프로그램 ***')
+        print('# 1. 제품등록')
+        print('# 2.전체 제품 조회')
+        print('# 3. 끝내기')
         menu = int(input('>> '))
 
         if menu == 1:
