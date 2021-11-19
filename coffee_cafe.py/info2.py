@@ -3,7 +3,7 @@ user = [
     {
         
     }
-    ]
+]
 
 # 함수 정의부
 # 메뉴를 출력하는 함수
@@ -42,17 +42,17 @@ def info_list():
 
 def login():
     while True:
-      print('========로그인========')
+        print('========로그인========')
       
-      id1=input('아이디를 입력해주세요 : ')
+        id1=input('아이디를 입력해주세요 : ')
 
-      ps2=input('비밀번호를 입력해주세요 : ')
-      if id1 in len(user.keys()):
-        if user[id1] == ps2:
-          print('로그인 되었습니다')
-          break
+        ps2=input('비밀번호를 입력해주세요 : ')
+        if id1 in len(user).keys():
+            if user[id1] == ps2:
+                print('로그인 되었습니다')
+                break
       
-      print('로그인 실패! 다시 로그인 해주세요')  
+        print('로그인 실패! 다시 로그인 해주세요')  
 
 
 # def login():
