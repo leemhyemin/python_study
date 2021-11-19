@@ -5,16 +5,6 @@ user = [
         '이름': 'tom',
         '아이디' : 'abc123',
         '비밀번호': 'abcabc'
-    },
-    {
-        '이름': 'amy',
-        '아이디': 'asdf123',
-        '비밀번호': 'asdfasdf'
-    },
-    {
-        '이름': 'tom',
-        '아이디': 'qwerqwer',
-        '비밀번호': 'qwerqwer'
     }
 ]
 
@@ -34,29 +24,27 @@ def show_menu():
 
 # ID와 PW을 등록하는 함수
 def user_join():
-    ID = {}
-    PW = {}
-    name = {}
-    print('\n ☆ 회원 가입을 시작합니다.')    
-    user_info['회원아이디'] = check_ID_code()
-    user_info['아이디'] = input(' 아이디 : ').upper()
-    user_info['비밀번호'] = input(' 비밀번호: ').upper()
-    user_info['비밀번호'] = input(' 비밀번호 재확인: ').upper()
-    user_info['이름'] = input(' 이름 : ')
-    
+    info = {}
+    print('\n ☆ 회원 가입을 시작합니다. ☆')    
 
-    print(f'★ {user_info}님 가입을 축하합니다 ★')
+    info['이름'] = input(' 이름 : ')
+    info['중복확인아이디'] = check_ID_code()
+    info['아이디'] = input(' 아이디 : ')
+    info['비밀번호'] = input(' 비밀번호: ')
+    info['비밀번호'] = input(' 비밀번호 재확인: ')
+    user.append(info)
+    print('★ 가입을 축하합니다 ★')
     print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
 
 
 # ID를 중복을 확인하는함수
 def check_ID_code():    
     while True:       
-        code = input(' 아이디 : ')    
+        code = input(' 중복확인아이디: ')    
         flag = False  # 중복 플래그          
         # 중복 검증
         for p in user:
-            if code == p['아이디']:
+            if code == p['중복확인아이디']:
                 # 중복됨
                 print('☞ 이미 사용중이거나 탈퇴한 ID 입니다 ☜')   
                 flag = True             
@@ -108,7 +96,7 @@ if __name__ == '__main__':
 
     # while True:
         show_menu()
-        menu = input('메뉴 입력 :  ')
+        menu = int(input('메뉴 입력 :  '))
 
         if menu == 1:
             user_join()

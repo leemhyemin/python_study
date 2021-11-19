@@ -5,20 +5,20 @@ id_list = [{
 
 
 # ID를 중복을 확인하는함수
-def check_id_code():    
-    while True:
+# def check_id_code():    
+#     while True:
         
-        code = input('아이디: ')    
-        flag = False  # 중복 플래그          
-        # 중복 검증
-        for p in id_list:
-            if code == p['아이디중복']:
-                # 중복됨
-                print('# 아이디가 중복되었습니다.!')   
-                flag = True             
-                break
-        if flag == False:   
-            return code
+#         code = input('아이디: ')    
+#         flag = False  # 중복 플래그          
+#         # 중복 검증
+#         for p in id_list:
+#             if code == p['아이디중복']:
+#                 # 중복됨
+#                 print('# 아이디가 중복되었습니다.!')   
+#                 flag = True             
+#                 break
+#         if flag == False:   
+#             return code
 
 
 # # 회원가입 함수
