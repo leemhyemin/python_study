@@ -11,7 +11,6 @@
 from sys import prefix
 
 
-inventory = []
 inventory = [
     {
         '제품번호': 'a001',
@@ -208,7 +207,7 @@ if __name__ == '__main__':
             print('# 메뉴를 잘못 입력했습니다.')
 
         input('#Enter를 누르시면 메뉴로 돌아갑니다.')
- 
+
 
 
 #  C R U D 
