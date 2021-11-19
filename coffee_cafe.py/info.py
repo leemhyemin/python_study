@@ -38,14 +38,14 @@ def user_join():
     PW = {}
     name = {}
     print('\n ☆ 회원 가입을 시작합니다.')    
-    user['회원아이디'] = check_ID_code()
-    user['아이디'] = input(' 아이디 : ').upper()
-    user['비밀번호'] = input(' 비밀번호: ').upper()
-    user['비밀번호'] = input(' 비밀번호 재확인: ').upper()
-    user['이름'] = input(' 이름 : ')
+    user_info['회원아이디'] = check_ID_code()
+    user_info['아이디'] = input(' 아이디 : ').upper()
+    user_info['비밀번호'] = input(' 비밀번호: ').upper()
+    user_info['비밀번호'] = input(' 비밀번호 재확인: ').upper()
+    user_info['이름'] = input(' 이름 : ')
     
 
-    print(f'★ {user}님 가입을 축하합니다 ★')
+    print(f'★ {user_info}님 가입을 축하합니다 ★')
     print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
 
 
@@ -74,9 +74,9 @@ def input_code(msg):
 
 # Id를 찾아오는 함수
 def get_ID(code):
-    for ID in user:
-        if code == ID['회원아이디']:
-            return ID
+    for user in user_info:
+        if code == user['회원아이디']:
+            return user
     return {} # 못 찾을 경우 상징적으로 빈 딕셔너리 리턴
 
 
@@ -129,7 +129,6 @@ if __name__ == '__main__':
 
         input('#Enter를 누르시면 메뉴로 돌아갑니다.')
  
-
 
 
 
