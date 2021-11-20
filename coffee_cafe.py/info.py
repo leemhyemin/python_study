@@ -23,34 +23,51 @@ def show_menu():
     print('7 . 종료 ')
 
 
-# 1. 회원가입 | ID와 PW을 등록하는 함수
-def user_join():
+def user_info():
     
-    print('\n ☆ 회원 가입을 시작합니다. ☆')    
-
-    id1 = input('아이디를 입력해주세요(종료:q) : ')
-
-    if id1 == 'q':
-        return 'q'
-    ps1 = input('비밀번호를 입력해주세요 : ')
-    user[id1] = ps1
-    print('회원가입 되셨습니다!')
-
-# 2.로그인 | 리스트 안에 딕셔너리 저장된아이디와 비밀번호 입력
-def login():
+    # name = input('- 이름: ')
+    info = {}
+    print('\n ☆\t회원 가입을 시작합니다. ☆')      
+    info['이름'] = input('- 이름: ')
+        
     while True:
-      print('========로그인========')
-      
-      id2=input('아이디를 입력해주세요 : ')
+        for info in user:
+            id = input('- 아이디: ')
+            if info['아이디'] == id :
+                print('이미 등록된 아이디 입니다.')
+                continue
+            else:
+                print('사용가능 아이디 입니다')
+                pw1 = input('- 비밀번호: ')
+                while True:
+                    pw2 = input('- 비밀번호확인: ')
+                    if pw1 == pw2 :
+                        pw2 = info['비밀번호']
+                        print('회원가입이 완료되었습니다.')
+                        user.append(info)    
+                        return
+                    else:
+                        print('비밀번호 확인이 틀렸습니다.')
+                        continue
+               
 
-      ps2=input('비밀번호를 입력해주세요 : ')
+def login():
+    print('----------로그인----------')
+    print(user)
+    while True: 
+        for info in user:
+            id = input('- 아이디: ')
+            pw = input('- 비밀번호: ')
+            if (info['아이디'] == id) and (info['비밀번호'] == pw):
+                print('☆ 로그인 되셨습니다 ☆')
+                print('{}님 환영합니다.'.format(info['이름']))
+                return
+            elif (info['아이디'] != id) and (info['비밀번호'] == pw):
+                print('아이디가 틀렸습니다.')
+            elif (info['아이디'] == id) and (info['비밀번호'] != pw):
+                print('비밀번호가 틀렸습니다.')
 
-      if id2 in user.keys():
-        if user[id2] == ps2:
-          print('로그인 되었습니다')
-          break
-      
-      print('로그인 실패! 다시 로그인 해주세요')  
+
 
 
 
