@@ -178,7 +178,7 @@ def delete_product():
         print('# 존재하지 않는 제품입니다.')
 
 
-# 메인 실행부
+# 메인 실행부   
 if __name__ == '__main__':
     
 

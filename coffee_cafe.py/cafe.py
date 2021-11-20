@@ -194,3 +194,6 @@ else:
     print('아이디가 일치하지 않습니다.')
 msg = f'{uid}님, 환영합니다.' if login else '프로그램을 종료합니다.' # Ternary Operator: 3항 연산자
 print(msg)
+
+
+

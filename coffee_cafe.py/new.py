@@ -1,22 +1,22 @@
 
 users = {}
-
+# 회원가입
 def register():
-  print('========회원가입========')
-  id1 = input('아이디를 입력해주세요(종료:q) : ')
+    print('========회원가입========')
+    id1 = input('아이디를 입력해주세요(종료:q) : ')
 
-  if id1 == 'q':
-    return 'q'
-  ps1 = input('비밀번호를 입력해주세요 : ')
-  users[id1] = ps1
-  print('회원가입 되셨습니다!')
-  
+    if id1 == 'q':
+        return 'q'
+    ps1 = input('비밀번호를 입력해주세요 : ')
+    users[id1] = ps1
+    print('회원가입 되셨습니다!')
 
+# 로그인
 def login():
     while True:
       print('========로그인========')
       
-      id2=input('아이디를 입력해주세요 : ')
+      id2=input('아이디를 입력해주세요 : ') 
 
       ps2=input('비밀번호를 입력해주세요 : ')
       if id2 in users.keys():

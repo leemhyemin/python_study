@@ -2,12 +2,13 @@ from sys import prefix
 # 회원가입
 user = [
     {
-        '이름': 'tom',
-        '아이디' : 'abc123',
-        '비밀번호': 'abcabc'
+    },
+    {
+    },
+    {
     }
 ]
-
+print(type(user))
 
 # 함수 정의부
 # 메뉴를 출력하는 함수
@@ -22,61 +23,37 @@ def show_menu():
     print('7 . 종료 ')
 
 
-# ID와 PW을 등록하는 함수
+# 1. 회원가입 | ID와 PW을 등록하는 함수
 def user_join():
-    info = {}
+    
     print('\n ☆ 회원 가입을 시작합니다. ☆')    
 
-    info['이름'] = input(' 이름 : ')
-    info['중복확인아이디'] = check_ID_code()
-    info['아이디'] = input(' 아이디 : ')
-    info['비밀번호'] = input(' 비밀번호: ')
-    info['비밀번호'] = input(' 비밀번호 재확인: ')
-    user.append(info)
-    print('★ 가입을 축하합니다 ★')
-    print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
+    id1 = input('아이디를 입력해주세요(종료:q) : ')
+
+    if id1 == 'q':
+        return 'q'
+    ps1 = input('비밀번호를 입력해주세요 : ')
+    user[id1] = ps1
+    print('회원가입 되셨습니다!')
+
+# 2.로그인 | 리스트 안에 딕셔너리 저장된아이디와 비밀번호 입력
+def login():
+    while True:
+      print('========로그인========')
+      
+      id2=input('아이디를 입력해주세요 : ')
+
+      ps2=input('비밀번호를 입력해주세요 : ')
+
+      if id2 in user.keys():
+        if user[id2] == ps2:
+          print('로그인 되었습니다')
+          break
+      
+      print('로그인 실패! 다시 로그인 해주세요')  
 
 
-# ID를 중복을 확인하는함수
-def check_ID_code():    
-    while True:       
-        code = input(' 중복확인아이디: ')    
-        flag = False  # 중복 플래그          
-        # 중복 검증
-        for p in user:
-            if code == p['중복확인아이디']:
-                # 중복됨
-                print('☞ 이미 사용중이거나 탈퇴한 ID 입니다 ☜')   
-                flag = True             
-                break
-        if flag == False:
-            return code
 
-
-# {}을(를) 입력받는 함수
-def input_code(msg):
-    print(f'# {msg}를 위한 정보를 입력해주세요.')
-    code = input('>> ')
-    return code
-
-
-# Id를 찾아오는 함수
-def get_ID(code):
-    for user in user_info:
-        if code == user['회원아이디']:
-            return user
-    return {} # 못 찾을 경우 상징적으로 빈 딕셔너리 리턴
-
-
-# 아이디 찾는 함수
-def search_id():
-    code = input_code('ID 찾기')
-    ID = (code)
-
-    if len(user) > 0:
-        print(['아이디'])
-    else:
-        print(f'☞ 이미 사용중이거나 중복된 {user} 입니다 ☜')
 
 
 # 프로그램 종료처리 함수
@@ -92,18 +69,16 @@ def exit_program():
 
 if __name__ == '__main__':
 
-    # user_join()
-
-    # while True:
+    while True:
         show_menu()
         menu = int(input('메뉴 입력 :  '))
 
         if menu == 1:
             user_join()
         elif menu == 2:
-            pass
+            login()
         elif menu == 3:
-            get_ID()   
+            search_id()   
         elif menu == 4:
             pass
         elif menu == 5:
@@ -128,7 +103,11 @@ if __name__ == '__main__':
 
 
 
-
+# # {}을(를) 입력받는 함수
+# def input_code(msg):
+#     print(f'# {msg}를 위한 정보를 입력해주세요.')
+#     code = input('>> ')
+#     return code
 
 
 
