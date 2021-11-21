@@ -150,6 +150,15 @@ def delete_user():
     else:
         print('# 존재하지 않는 아이디입니다.')  
 
+# 프로그램 종료처리 함수
+def exit_program():
+    import sys
+    print("# 프로그램을 종료합니다. [Y/N]")
+    answer = input('>> ')
+    if answer.lower()[0] == 'y':
+        sys.exit()
+    else:
+        return
 
 
 # 실행부
@@ -172,3 +181,10 @@ if __name__ == '__main__':
 
         if menu == 5:
             delete_user()
+        elif menu == 6:
+            exit_program()
+        else:
+            print('# 메뉴를 잘못 입력했습니다.')
+
+        input('#Enter를 누르시면 메뉴로 돌아갑니다.')
+
