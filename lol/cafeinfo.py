@@ -19,28 +19,27 @@ def login_menu():
 
     print('#1 . 회원가입 ')
     print('#2 . 로그인 ')
-
 # 회원가입
-def user_info():
+def sign_up():
     info = {}
     print('\n ☆ 회원 가입을 시작합니다. ☆')      
     info['이름'] = input('- 이름: ')
     info['아이디'] = check_duplicate_code2()
-    if info['아이디']  not in user:
+    if info['아이디'] not in user:
         print(' 사용가능 아이디 입니다')
     else:
         print('이미 등록된 아이디 입니다.')
-    info['비밀번호'] = input('- 비밀번호: ')
-    if info['비밀번호'] == input('- 비밀번호확인: '):
-        print('비밀번호가 일치합니다')
-    else:
-        return
-        print('비밀번호가 일치하지 않습니다.')
-    user.append(info)
-    print('회원가입 되셨습니다!')
-    print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
-    input()
-
+    while True:    
+        info['비밀번호'] = input('- 비밀번호: ')
+        if info['비밀번호'] == input('- 비밀번호확인: '):
+            print('비밀번호가 일치합니다')
+            user.append(info)
+            print('회원가입 되셨습니다!')
+            print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
+            return
+        else:
+            print('비밀번호가 일치하지 않습니다.')
+            continue        
 # 로그인
 def login():
     print('----------로그인----------')
@@ -56,9 +55,7 @@ def login():
             print('아이디가 틀렸습니다.')
         elif (info['아이디'] == id) and (info['비밀번호'] != pw):
             print('비밀번호가 틀렸습니다.')
-        
-        input()
-        
+
 # 중복
 def check_duplicate_code2():    
     while True:       
@@ -172,6 +169,7 @@ def manager_page():
     elif select == 4:
         print('취소합니다.')
 
+
 # head 출력 함수
 def show_menu():
     print('\n*** 안녕하세요! 카페입니다!! ***')
@@ -218,6 +216,14 @@ def exit_program():
 
 
 
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     
     while True:
@@ -229,9 +235,8 @@ if __name__ == '__main__':
         if select == 1:
             login_menu()
             menu = int(input('>> '))
-            print(user)
             if menu == 1:
-                user_info()
+                sign_up()
             elif menu == 2:
                 login()
         elif select == 2:

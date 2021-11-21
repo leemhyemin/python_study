@@ -92,7 +92,7 @@ while True:
                 start = thirty_one_list[-1] + 1
             
                 break #숫자 입력마감
-                
+
 
 
 #append하면 1차함수가 2차함수 ex [[1,2,3]] 더하기 하면 결합.ex [1, 2 , 3]  
