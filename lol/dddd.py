@@ -35,25 +35,28 @@ def user_info():
     print('회원가입 되셨습니다!')
     print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
     input()
-
 # 로그인
 def login():
     print('----------로그인----------')
-    print(user)
-
+    # print(user)
+    id = input('- 아이디: ')
+    find_user = None
     for info in user:
-        id = input('- 아이디: ')
-        pw = input('- 비밀번호: ')
-        if (info['아이디'] == id) and (info['비밀번호'] == pw):
-            print('☆ 로그인 되셨습니다 ☆')
-            print('{}님 환영합니다.'.format(info['이름']))
+        if info['아이디'] == id:
+            find_user = info
             break
-        elif (info['아이디'] != id) and (info['비밀번호'] == pw):
-            print('아이디가 틀렸습니다.')
-        elif (info['아이디'] == id) and (info['비밀번호'] != pw):
-            print('비밀번호가 틀렸습니다.')
-
-        input()
+        else:
+            print('아이디를 다시 입력해주세요.')
+            return False
+    real_pw = find_user['비밀번호']
+    pw = input('- 비밀번호: ')
+    if real_pw == pw:
+        print('로그인 되었습니다.')
+        print('{}님 환영합니다.'.format(info['이름']))
+        return True
+    else:   
+        print('비밀번호가 틀렸습니다.')
+        return False
 # 아이디 중복
 def check_duplicate_code():    
     while True:       

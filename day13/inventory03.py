@@ -80,15 +80,15 @@ def insert_product():
     print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
     
 
-# 프로그램 종료처리 함수
-def exit_program():
-    import sys
-    print("# 프로그램을 종료합니다. [Y/N]")
-    answer = input('>> ')
-    if answer.lower()[0] == 'y':
-        sys.exit()
-    else:
-        return
+    # 프로그램 종료처리 함수
+    def exit_program():
+        import sys
+        print("# 프로그램을 종료합니다. [Y/N]")
+        answer = input('>> ')
+        if answer.lower()[0] == 'y':
+            sys.exit()
+        else:
+            return
 
 # 제품 정보 출력 머리말 부분
 def header_print():
