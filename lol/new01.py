@@ -66,19 +66,19 @@ def user_info():
     while True:
         name = input('이름: ')
         if len(name.strip()) == 0:
-            print('공백 x') 
+            print('아무것도 입력된게 없습니다.') 
         else:
             while True: 
                 info['이름'] = name
                 nickname = check_duplicate_nickname()
                 if len(nickname.strip()) == 0:
-                    print('공백 x')
+                    print('아무것도 입력된게 없습니다. ')
                 else:
                     while True:
                         info['별명'] = nickname
                         id = check_duplicate_id()
                         if len(id.strip()) == 0:
-                            print('공백 x')
+                            print('아무것도 입력된게 없습니다.')
                         else:
                             info['아이디'] = id
                             if info['아이디'] not in user:
@@ -88,12 +88,12 @@ def user_info():
                             while True:  
                                 pw = input('비밀번호: ')
                                 if len(pw.strip()) == 0:
-                                    print('공백 x')
+                                    print('아무것도 입력된게 없습니다.')
                                 else:
                                     info['비밀번호'] = pw
                                     pw2 = input('비밀번호 확인: ')
                                     if len(pw2.strip()) == 0:
-                                        print('공백')
+                                        print('아무것도 입력된게 없습니다.')
                                     else:
                                         info['비밀번호'] == pw2   
                                         if info['비밀번호'] == pw2:
