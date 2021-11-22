@@ -11,6 +11,7 @@ cafelist = [
 ]
 
 user = []
+    
 
 
 # 함수 정의부
@@ -72,22 +73,20 @@ def user_info():
 def login():
     print('----------로그인----------')
     print(user)
+    id = input('- 아이디: ')
+    find_user = None
     for info in user:
-        id = input('- 아이디: ')
-        pw = input('- 비밀번호: ')
-        if (info['아이디'] == id) and (info['비밀번호'] == pw):
-            print('☆ 로그인 되셨습니다 ☆')
-            print('{}님 환영합니다.'.format(info['이름']))
-            input()
-            return True
-        elif (info['아이디'] != id) and (info['비밀번호'] == pw):
-            print('아이디가 틀렸습니다.')
-            input()
-            return False
-        elif (info['아이디'] == id) and (info['비밀번호'] != pw):
-            print('비밀번호가 틀렸습니다.')
-            input()
-            return False      
+        if (info['아이디'] == id):
+            find_user = info
+            break
+    real_pw = find_user['비밀번호']
+    pw = input('- 비밀번호: ')
+
+    if real_pw == pw:
+        print('☆ 로그인 되셨습니다 ☆')
+        print('{}님 환영합니다.'.format(find_user['이름']))
+    else:
+        print('로그인 실패')
 
 # 0 - 3_1 [id 찾기] - id 조회 헤드 함수
 def header_id():
@@ -257,6 +256,7 @@ def modify_product():
 
     if len(menu) > 0:
         print('\n# {}의 정보를 수정합니다.'.format(menu['제품명']))
+        menu['제품명']
         print('[ 1. 이름 변경 | 2. 단가 변경 | 3. 일괄 변경 | 4. 취소 ]')
         select = int(input('>> '))
         if select == 1:
