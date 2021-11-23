@@ -1,6 +1,12 @@
 import sys
 login_status = False
 
+import sys
+import os
+import pickle
+
+dir_name = 'D:/isec_Hmo3o/py_study/cafeinfo/'
+file_name = 'cafeinfo.sav'
 cafelist = [
     {'제품명' : '아메리카노',
     '가격' : 5000
@@ -24,6 +30,31 @@ user = [
 
 
 # 함수 정의부
+# 세이브 파일 생성 함수
+def save_info():
+    if not os.path.isdir(dir_name):
+        os.mkdir(dir_name)
+
+    try:
+        # b모드는 딕셔너리나 리스트 같은 개개체를 통째로 넣을때 사용하는 모드
+        f = open(dir_name + file_name, 'wb')
+        pickle.dump(user, f)# 리스트 통째로 세이브 파일에 저장
+    except:
+        print('파일 저장 실패')
+    finally:
+        f.close()
+# 파일 로드 기능 함수
+def load_user():
+    global user
+
+    try:
+        f = open(dir_name + file_name, 'rb')
+        user = pickle.load(f)
+    except:
+        print("파일 로드 실패")
+    finally:
+        f.close()
+
 # login head 출력 함수    
 def show_login():
     print('로그인이 필요한 서비스입니다.')
@@ -102,6 +133,7 @@ def user_info():
                                             print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
                                             input()
                                             return
+                                            save_info()
                                         else:
                                             print('비밀번호가 일치하지 않습니다.')
                                             continue   
@@ -123,6 +155,7 @@ def login():
         print('로그인 되었습니다.')
         print('{}님 환영합니다.'.format(info['이름']))
         return True
+        save_info()
     else:   
         print('비밀번호가 틀렸습니다.')
         return False

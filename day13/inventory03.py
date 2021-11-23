@@ -146,15 +146,12 @@ def input_code(msg):
     code = input('>> ')
     return code
 
-
 # 제품번호로 해당 제품을 찾아오는 함수
 def get_product(code):
     for product in inventory:
         if code == product['제품번호']:
             return product
     return {} # 못 찾을 경우 상징적으로 빈 딕셔너리 리턴
-
-
 
 # 개별 제품 조회 처리 함수
 def search_product():
