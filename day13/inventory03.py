@@ -5,11 +5,17 @@
 # 5. 제품정보 삭제하기 remove
 # 6. 프로그램 종료하기
 # 메뉴입력:
+# 세이브 파일 관련모듈
+import sys
+import os
+import pickle
 
 
 # 전역변수
 from sys import prefix
 
+dir_name = 'D:/isec_Hmo3o/py_study/inventory/'
+file_name = 'inventory.sav'
 
 inventory = [
     {
@@ -37,7 +43,31 @@ inventory = [
 
 
 # 함수 정의부
+# 세이브 파일 생성 함수
+def save_inventory():
+    if not os.path.isdir(dir_name):
+        os.mkdir(dir_name)
 
+    try:
+        # b모드는 딕셔너리나 리스트 같은 개개체를 통째로 넣을때 사용하는 모드
+        f = open(dir_name + file_name, 'wb')
+        pickle.dump(inventory, f)# 리스트 통째로 세이브 파일에 저장
+    except:
+        print('파일 저장 실패')
+    finally:
+        f.close()
+# 파일 로드 기능 함수
+def load_inventory():
+    global inventory
+
+
+    try:
+        f = open(dir_name + file_name, 'rb')
+        inventory = pickle.load(f)
+    except:
+        print("파일 로드 실패")
+    finally:
+        f.close()
 
 # 메뉴를 출력하는 함수
 def show_menu():
@@ -77,6 +107,7 @@ def insert_product():
     product['총액'] = product['가격'] * product['수량']
     inventory.append(product)
     print('#제품 등록이 정상처리되었습니다.')
+    save_inventory()
     print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
     
 
@@ -162,7 +193,7 @@ def modify_product():
 
         # 공통 처리 (총액 갱신)
         product['총액'] = product['가격'] * product['수량']
-
+        save_inventory()
     else:
         print('#존재하지 않는 제품입니다.')    
     
@@ -176,12 +207,12 @@ def delete_product():
         print('\n# 제품이 정상 삭제 되었습니다.')
     else:
         print('# 존재하지 않는 제품입니다.')
-
+    save_inventory()
 
 # 메인 실행부   
 if __name__ == '__main__':
-    
 
+    load_inventory()
     while True:
         show_menu()
         menu = int(input('>> '))

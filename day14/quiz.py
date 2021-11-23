@@ -10,7 +10,7 @@ f_name = input("파일명을 입력: ")
 f_path = "D:/isec_Hmo3o/py_study/{}.txt".format(f_name)
 # encoding='UTF-8 한글 안깨지게 해주는것
 # a는 파일은 냅두고 거기에 더 추가 저장
-
+# a는 append개념 f_path open 개념
 try:
     f = open(f_path, "a", encoding='UTF-8')  # 내용을 추가하기 위해서 'a'를 사용
     
