@@ -1,6 +1,8 @@
 import sys
 login_status = False
-
+# 로그아웃 추가
+# 비밀번호 재설정
+# 또는 비밀번호 *표시
 # import sys
 # import os
 # import pickle
@@ -139,15 +141,13 @@ def user_info():
 # 0 - 2 [로그인] 함수 
 def login():
     print('----------로그인----------')
+    print(user)
     id = input('- 아이디: ')
     find_user = None
     for info in user:
-        if info['아이디'] == id:
+        if (info['아이디'] == id):
             find_user = info
             break
-        else:
-            print('아이디가 존재하지 않습니다.')
-            return False
     real_pw = find_user['비밀번호']
     pw = input('- 비밀번호: ')
     if real_pw == pw:
@@ -157,7 +157,7 @@ def login():
     else:   
         print('비밀번호가 틀렸습니다.')
         return False
-
+  
 # 0 - 3_1 [id 찾기] - id 조회 헤드 함수
 def header_id():
     print('\n\t\t*** 회원 아이디 조회 *** ')
@@ -216,7 +216,7 @@ def search_pw():
 
     if len(info) > 0:
         header_pw()
-        print('[{:^7s}]님의 별명[{:^7s}],아이디는 [{:^7s}], 비밀번호는 [{:^7s}] 입니다.'.format(info['이름'], info['별명'], info['아이디'], info['비밀번호']))
+        print('[{:^7s}]님의 별명[{:^7s}],아이디는 [{:^7s}] 입니다.'.format(info['이름'], info['별명'], info['아이디']))
         print('=' * 80)
     else:
         print('# 존재하지 않는 정보입니다..')

@@ -49,26 +49,49 @@ def check_duplicate_id():
 # 0 - 1 [회원가입] 함수
 def user_info():
     info = {}
-    print('\n☆ 회원 가입을 시작합니다. ☆')      
-    info['이름'] = input('- 이름: ')
-    info['별명'] = check_duplicate_nickname()
-    info['아이디'] = check_duplicate_id()
-    if info['아이디'] not in user:
-        print(' 사용가능 아이디 입니다')
-    else:
-        print('이미 등록된 아이디 입니다.')
-    while True:     
-        info['비밀번호'] = input('- 비밀번호: ')
-        if info['비밀번호'] == input('- 비밀번호확인: '):
-            user.append(info)
-            print('회원가입 되셨습니다!')
-            print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
-            input()
-            return
+    print('\n☆ 회원 가입을 시작합니다. ☆')
+    while True:
+        name = input('이름: ')
+        if len(name.strip()) == 0:
+            print('아무것도 입력된게 없습니다.') 
         else:
-            print('비밀번호가 일치하지 않습니다.')
-            continue   
-        
+            while True: 
+                info['이름'] = name
+                nickname = check_duplicate_nickname()
+                if len(nickname.strip()) == 0:
+                    print('아무것도 입력된게 없습니다. ')
+                else:
+                    while True:
+                        info['별명'] = nickname
+                        id = check_duplicate_id()
+                        if len(id.strip()) == 0:
+                            print('아무것도 입력된게 없습니다.')
+                        else:
+                            info['아이디'] = id
+                            if info['아이디'] not in user:
+                                print(' 사용가능 아이디 입니다')
+                            else:
+                                print('이미 등록된 아이디 입니다.')
+                            while True:  
+                                pw = input('비밀번호: ')
+                                if len(pw.strip()) == 0:
+                                    print('아무것도 입력된게 없습니다.')
+                                else:
+                                    info['비밀번호'] = pw
+                                    pw2 = input('비밀번호 확인: ')
+                                    if len(pw2.strip()) == 0:
+                                        print('아무것도 입력된게 없습니다.')
+                                    else:
+                                        info['비밀번호'] == pw2   
+                                        if info['비밀번호'] == pw2:
+                                            user.append(info)
+                                            print('회원가입 되셨습니다!')
+                                            print('메뉴화면으로 돌아가시려면 Enter를 누르세요')
+                                            input()
+                                            return
+                                        else:
+                                            print('비밀번호가 일치하지 않습니다.')
+                                            continue   
 # 0 - 2 [로그인] 함수 
 def login():
     print('----------로그인----------')
@@ -87,6 +110,8 @@ def login():
         return True
     else:   
         print('비밀번호가 틀렸습니다.')
+        return False
+
 # 0 - 3_1 [id 찾기] - id 조회 헤드 함수
 def header_id():
     print('\n\t\t*** 회원 아이디 조회 *** ')

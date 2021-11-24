@@ -1,0 +1,12 @@
+; 환경설정, 라이브러리 설치
+; 두 번째 환경설정은 라이브러리 설치입니다.
+; Cmd창 실행 -> 
+; pip install beautifulsoup4 입력 -> 
+; 설치 완료 후 pip install selenium 입력
+; 이후 파이썬 코드 첫번째줄, 두번째줄에
+; from selenium import webdriver
+; from bs4 import BeautifulSoup
+; 를 입력하면 각 라이브러리 사용이 가능해집니다.
+; 설치가 안 될 경우는 제가 드린 파이썬 설치교안을 보고 다시 절차대로 설치해주세요
+; 크롬 드라이브
+; pip list 깔린거 리스트

@@ -1,5 +1,6 @@
 
 
+
 import random as r 
 import time as t #시간과 날짜를 제어하는 모듈
 from os import readlink
