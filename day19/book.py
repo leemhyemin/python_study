@@ -72,14 +72,14 @@ for book in best_list:
     # 타이틀
     title = book.select_one('div.title').text.strip()
     # 저자
-    # author = book.select_one('div.author').text.strip()
     # author_name = author.split('|')[0].strip()
+    # main_authorm, sub_author = author_name_list
+    author = book.select_one('div.author').text.strip()
     author_name_list = author.split('|')[0].split('저자 더보기')
-    main_authorm, sub_author = author_name_list
 
     if len(author_name_list) == 1:
-        main_authorm = author_name_list[0].strip()
-        sub_author = '';
+        main_authorm = author_name_list[0]
+        sub_author = ''
     else:
         main_author, sub_author = author_name_list
     # 가격
@@ -87,8 +87,9 @@ for book in best_list:
 
     print(title)
     print(main_authorm.strip())
-
+    print(sub_author.strip())
     print(price)
+
     print('=' * 70 )
   
 
