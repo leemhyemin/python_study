@@ -61,21 +61,34 @@ html = browser.page_source
 soup = BeautifulSoup(html, 'html.parser')
 
 # 베스트 셀러 리스트 정보
-main_contents = soup.select('.main_contents > ul > strong') 
+best_list = soup.select('ul.list_type01 > li')
 
-for b in range(20):
+# print(f'{len(best_list)}개수: ')
+# print(best_list[0])
 
-    m = main_contents[b]
-    
-    # 도서 제목
-    book_name = d.select_one('div.title > a').text.strip()
-    
-    # 지은이
-    author = d.select_one('div.detail > a').text
 
-    # 도서 가격
-    price = d.select_one(' div.price > a ').text.strip()
-    print(book_name)
-    print(author)
+for book in best_list:
+
+    # 타이틀
+    title = book.select_one('div.title').text.strip()
+    # 저자
+    # author = book.select_one('div.author').text.strip()
+    # author_name = author.split('|')[0].strip()
+    author_name_list = author.split('|')[0].split('저자 더보기')
+    main_authorm, sub_author = author_name_list
+
+    if len(author_name_list) == 1:
+        main_authorm = author_name_list[0].strip()
+        sub_author = '';
+    else:
+        main_author, sub_author = author_name_list
+    # 가격
+    price = book.select_one('strong.book_price').text.strip()
+
+    print(title)
+    print(main_authorm.strip())
+
     print(price)
-    print('=' * 70)
+    print('=' * 70 )
+  
+
